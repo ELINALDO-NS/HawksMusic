@@ -1,5 +1,6 @@
 using HawksMusic.API.Data;
 using Microsoft.EntityFrameworkCore;
+
 namespace HawksMusic.API
 {
     public class Program
