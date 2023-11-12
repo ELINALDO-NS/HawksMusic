@@ -1,4 +1,5 @@
-
+using HawksMusic.API.Data;
+using Microsoft.EntityFrameworkCore;
 namespace HawksMusic.API
 {
     public class Program
@@ -13,6 +14,10 @@ namespace HawksMusic.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+           builder.Services.AddEntityFrameworkSqlite().
+                AddDbContext<HawksDataContext>(
+                options => options.UseSqlite(builder.Configuration.GetConnectionString("SQLite"))
+                );
 
             var app = builder.Build();
 
