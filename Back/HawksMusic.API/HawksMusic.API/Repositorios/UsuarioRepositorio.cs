@@ -20,34 +20,31 @@ namespace HawksMusic.API.Repositorios
 
         public async Task<bool> ApagarUsuario(int Id,UsusarioModel UsusarioModel)
         {
-            if( UsusarioPorId(Id) != null)
-            {
+
                
               _hawksDataContext.Ususarios.Remove(UsusarioModel);
               await _hawksDataContext.SaveChangesAsync();
               return true;
-            }
-             throw new Exception($"Usuario com Id: {Id} não encontrado");
+            
+            
         }
 
         public async Task<UsusarioModel> AtualizarUsuario(int Id, UsusarioModel UsusarioModel)
         {
-            if( UsusarioPorId(Id) != null)
-            {
+
                 UsusarioModel ususario = new UsusarioModel()
-               {
-                Nome = UsusarioModel.Nome,
-               Email = UsusarioModel.Email,
-               Senha = UsusarioModel.Senha,
-               PlayList = UsusarioModel.PlayList
+               { Id = UsusarioModel.Id,
+                 Nome = UsusarioModel.Nome,
+                Email = UsusarioModel.Email,
+                Senha = UsusarioModel.Senha,
+                PlayList = UsusarioModel.PlayList
 
                } ;
 
-              _hawksDataContext.Ususarios.Update(ususario);
+              _hawksDataContext.Ususarios.Update(UsusarioModel);
               await _hawksDataContext.SaveChangesAsync();
               return ususario;
-            }
-             throw new Exception($"Usuario com Id: {Id} não encontrado");
+          
          
         }
 

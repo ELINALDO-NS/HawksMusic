@@ -1,4 +1,6 @@
 using HawksMusic.API.Data;
+using HawksMusic.API.Repositorios;
+using HawksMusic.API.Repositorios.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace HawksMusic.API
@@ -19,7 +21,8 @@ namespace HawksMusic.API
                 AddDbContext<HawksDataContext>(
                 options => options.UseSqlite(builder.Configuration.GetConnectionString("SQLite"))
                 );
-
+            
+            builder.Services.AddScoped<IUsuarioRepositorio,UsuarioRepositorio>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
