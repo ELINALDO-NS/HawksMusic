@@ -23,6 +23,7 @@ namespace HawksMusic.API
                 );
             
             builder.Services.AddScoped<IUsuarioRepositorio,UsuarioRepositorio>();
+            builder.Services.AddScoped<IMusicaRepositorio,MusicaRepositorio>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
