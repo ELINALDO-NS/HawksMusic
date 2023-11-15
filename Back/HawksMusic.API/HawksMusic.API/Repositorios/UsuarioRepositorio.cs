@@ -21,31 +21,42 @@ namespace HawksMusic.API.Repositorios
         public async Task<bool> ApagarUsuario(int Id,UsusarioModel UsusarioModel)
         {
 
-               
-              _hawksDataContext.Ususarios.Remove(UsusarioModel);
+            UsusarioModel ususario = await UsusarioPorId(Id);
+            if(ususario != null)
+            {                    
+              _hawksDataContext.Ususarios.Remove(ususario);
               await _hawksDataContext.SaveChangesAsync();
               return true;
+            }
+            else
+            {
+                throw new Exception($"Usuario com Id {Id} Não encontrado !");
+            }  
+             
             
             
         }
 
         public async Task<UsusarioModel> AtualizarUsuario(int Id, UsusarioModel UsusarioModel)
         {
+            UsusarioModel ususario = await UsusarioPorId(Id);
+            if(ususario != null)
+            {                    
+                
+                 ususario.Nome = UsusarioModel.Nome;
+                 ususario.Email = UsusarioModel.Email;
+                 ususario.Senha = UsusarioModel.Senha;
+                 ususario.PlayList = UsusarioModel.PlayList;                    
+                  _hawksDataContext.Ususarios.Update(ususario);
+                  await _hawksDataContext.SaveChangesAsync();
+                  return ususario;
+            }
+            else
+            {
+                throw new Exception($"Usuario com Id {Id} Não encontrado !");
+            }  
+           
 
-                UsusarioModel ususario = new UsusarioModel()
-               { Id = UsusarioModel.Id,
-                 Nome = UsusarioModel.Nome,
-                Email = UsusarioModel.Email,
-                Senha = UsusarioModel.Senha,
-                PlayList = UsusarioModel.PlayList
-
-               } ;
-
-              _hawksDataContext.Ususarios.Update(UsusarioModel);
-              await _hawksDataContext.SaveChangesAsync();
-              return ususario;
-          
-         
         }
 
         public async Task<UsusarioModel> CriarUsuario(UsusarioModel UsusarioModel)

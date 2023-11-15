@@ -35,16 +35,15 @@ namespace HawksMusic.API.Controllers
          [HttpGet("{Id}")]
         public async Task<ActionResult<List<UsusarioModel>>> ListaUsuariosPorId(int Id)
         {
-            
-            return Ok(await _usuarioRepositorio.UsusarioPorId(Id));
+            UsusarioModel ususario = await _usuarioRepositorio.UsusarioPorId(Id);
+            return Ok(ususario);
         }
         
        [HttpPut("{Id}")]
-        public async Task<ActionResult<List<UsusarioModel>>> AtualizaUsuario([FromBody] UsusarioModel ususarioModel, int Id)
+        public async Task<ActionResult<UsusarioModel>> AtualizaUsuario([FromBody] UsusarioModel ususarioModel, int Id)
         {
 
-            
-            return Ok(await _usuarioRepositorio.AtualizarUsuario(Id,ususarioModel));
+            return Ok(await _usuarioRepositorio.AtualizarUsuario(Id, ususarioModel));
             
         }
 

@@ -20,23 +20,45 @@ namespace HawksMusic.API.Repositorios
 
         public async Task<bool> ApagaMusica(int Id, MusicaModel musicaModel)
         {
-           _hawksDataContext.Musicas.Remove(musicaModel);
-           await _hawksDataContext.SaveChangesAsync();
-           return true;
+            MusicaModel musica = await ListaMusicaPorId(Id);
+            if(musica != null)
+            {   
+                musica.Album = musicaModel.Album;
+                musica.Arquivo = musicaModel.Arquivo;
+                musica.Nome = musicaModel.Nome;
+                 _hawksDataContext.Musicas.Remove(musica);
+                 await _hawksDataContext.SaveChangesAsync();
+                 return true;
+            }
+            else
+            {
+                throw new Exception($"Usuario Com Id {Id} Não encontrado !");
+            }
+          
         }
 
         public async Task<MusicaModel> AtualizaMusica(int Id, MusicaModel musicaModel)
         {
-            MusicaModel Musica = new MusicaModel()
-            {Id = musicaModel.Id,
-             Nome = musicaModel.Nome,
-             Arquivo = musicaModel.Arquivo,
-             Album = musicaModel.Album,
-             AlbumModelId = musicaModel.AlbumModelId
-            };
-            _hawksDataContext.Musicas.Update(Musica);
+            MusicaModel musica = await ListaMusicaPorId(Id);
+            if(musica != null)
+            {
+           
+             musica.Nome = musicaModel.Nome;
+             musica.Arquivo = musicaModel.Arquivo;
+             musica.Album = musicaModel.Album;
+             musica.AlbumModelId = musicaModel.AlbumModelId;
+               _hawksDataContext.Musicas.Update(musica);
             await _hawksDataContext.SaveChangesAsync();
-            return Musica;
+            return musica;
+            
+            }
+            else
+            {
+                throw new Exception($"Usuario Com Id {Id} Não encontrado !");
+            }
+                 
+
+          
         }
 
         public async Task<MusicaModel> ListaMusicaPorId(int Id)
