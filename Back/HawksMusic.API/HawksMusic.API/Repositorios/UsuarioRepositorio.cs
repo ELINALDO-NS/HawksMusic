@@ -6,6 +6,7 @@ using HawksMusic.API.Data;
 using HawksMusic.API.Models;
 using HawksMusic.API.Repositorios.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace HawksMusic.API.Repositorios
 {
@@ -46,7 +47,7 @@ namespace HawksMusic.API.Repositorios
                  ususario.Nome = UsusarioModel.Nome;
                  ususario.Email = UsusarioModel.Email;
                  ususario.Senha = UsusarioModel.Senha;
-                 ususario.PlayList = UsusarioModel.PlayList;                    
+                 ususario.PlayListModelId = UsusarioModel.PlayListModelId;                    
                   _hawksDataContext.Ususarios.Update(ususario);
                   await _hawksDataContext.SaveChangesAsync();
                   return ususario;
