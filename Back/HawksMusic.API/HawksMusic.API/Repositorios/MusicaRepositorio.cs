@@ -71,7 +71,7 @@ namespace HawksMusic.API.Repositorios
             return await _hawksDataContext.Musicas.ToListAsync();
         }
 
-        public async Task<MusicaModel> SalvaMusica(MusicaModel musicaModel)
+        public async Task<MusicaModel> CriarMusica(MusicaModel musicaModel)
         {
             await _hawksDataContext.Musicas.AddAsync(musicaModel);
             await _hawksDataContext.SaveChangesAsync();

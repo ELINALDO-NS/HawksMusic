@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HawksMusic.API.Data;
 using HawksMusic.API.Models;
+using HawksMusic.API.Repositorios.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace HawksMusic.API.Repositorios
@@ -17,20 +18,12 @@ namespace HawksMusic.API.Repositorios
             _hawksMusic = hawksMusic;
         }
 
-        public async Task<bool> ApagaAlbum(int Id, AlbumModel albumModel)
-        {
-             AlbumModel album = await ListaAbumPorId(Id);
-            if(album != null)
-            { 
-                 _hawksMusic.Albums.Remove(album);
-                await _hawksMusic.SaveChangesAsync();
-                return true;
 
-            }
-            else
-            {
-                throw new Exception($"Album por Id {Id} Não encontrado");
-            }
+        public async Task<AlbumModel> CriarAlbum(AlbumModel albumModel)
+        {
+           await _hawksMusic.Albums.AddAsync(albumModel);
+          await  _hawksMusic.SaveChangesAsync();
+            return albumModel;
         }
 
         public async Task<AlbumModel> AtualizaAlbum(int Id, AlbumModel albumModel)
@@ -66,11 +59,20 @@ namespace HawksMusic.API.Repositorios
             return await _hawksMusic.Albums.ToListAsync();
         }
 
-        public async Task<AlbumModel> SalvaAlbum(AlbumModel albumModel)
+        public async Task<bool> ApagaAlbum(int Id, AlbumModel albumModel)
         {
-           await _hawksMusic.Albums.AddAsync(albumModel);
-          await  _hawksMusic.SaveChangesAsync();
-            return albumModel;
+             AlbumModel album = await ListaAbumPorId(Id);
+            if(album != null)
+            { 
+                 _hawksMusic.Albums.Remove(album);
+                await _hawksMusic.SaveChangesAsync();
+                return true;
+
+            }
+            else
+            {
+                throw new Exception($"Album por Id {Id} Não encontrado");
+            }
         }
     }
 }

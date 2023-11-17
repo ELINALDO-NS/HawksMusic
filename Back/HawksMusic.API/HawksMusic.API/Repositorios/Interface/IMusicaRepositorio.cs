@@ -8,7 +8,7 @@ namespace HawksMusic.API.Repositorios.Interface
 {
     public interface IMusicaRepositorio
     {
-        Task<MusicaModel> SalvaMusica(MusicaModel musicaModel);
+        Task<MusicaModel> CriarMusica(MusicaModel musicaModel);
         Task<List<MusicaModel>> ListaMusicas();
         Task<MusicaModel> ListaMusicaPorId(int Id);
         Task<MusicaModel> AtualizaMusica(int Id,MusicaModel musicaModel);

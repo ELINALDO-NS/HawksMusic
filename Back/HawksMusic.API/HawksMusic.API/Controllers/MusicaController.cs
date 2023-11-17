@@ -22,7 +22,7 @@ namespace HawksMusic.API.Controllers
         public async Task<ActionResult<MusicaModel>> SalvarMusica([FromBody] MusicaModel musicaModel)
         {
            
-            return Ok(await _musicaRepositorio.SalvaMusica(musicaModel));
+            return Ok(await _musicaRepositorio.CriarMusica(musicaModel));
         }
         [HttpGet]
         public async Task<ActionResult<List<MusicaModel>>> ListarMusicas()

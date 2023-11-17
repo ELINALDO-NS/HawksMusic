@@ -13,6 +13,7 @@ namespace HawksMusic.API.Repositorios.Interface
         Task<UsusarioModel> UsusarioPorId(int Id);
         Task<UsusarioModel> AtualizarUsuario(int Id,UsusarioModel UsusarioModel);
         Task<bool> ApagarUsuario(int Id,UsusarioModel UsusarioModel);
+        
 
 
     }

@@ -18,6 +18,11 @@ namespace HawksMusic.API.Controllers
         {
             _AlbumRepositorio = albumRepositorio;
         }
+       [HttpPost()]
+        public async Task<ActionResult<AlbumModel>> CriarAlbum([FromBody] AlbumModel AlbumModel)
+        {
+            return Ok(await _AlbumRepositorio.CriarAlbum(AlbumModel));
+        }
 
         [HttpGet]
         public async Task<ActionResult<List<AlbumModel>>> ListarAlbums()
@@ -25,24 +30,20 @@ namespace HawksMusic.API.Controllers
             return Ok(await _AlbumRepositorio.ListaAlbums());
         }
         [HttpGet("{Id}")]
-        public async Task<ActionResult<AlbumModel>> ListarAlbums(int Id)
+        public async Task<ActionResult<AlbumModel>> ListarAlbumsPorId(int Id)
         {
             return Ok(await _AlbumRepositorio.ListaAbumPorId(Id));
         }
-        [HttpPost()]
-        public async Task<ActionResult<AlbumModel>> CadastrarAlbum([FromBody] AlbumModel AlbumModel)
-        {
-            return Ok(await _AlbumRepositorio.CadastrarAlbum(AlbumModel));
-        }
+    
         [HttpPut("{Id}")]
-        public async Task<ActionResult<AlbumModel>> CadastrarAlbum([FromBody] AlbumModel AlbumModel,int Id)
+        public async Task<ActionResult<AlbumModel>> AtualizaAlbum([FromBody] AlbumModel AlbumModel,int Id)
         {
-            return Ok(await _AlbumRepositorio.CadastrarAlbum(AlbumModel,Id));
+            return Ok(await _AlbumRepositorio.AtualizaAlbum(Id,AlbumModel));
         }
-        [HttpPut("{Id}")]
+        [HttpDelete()]
         public async Task<ActionResult<AlbumModel>> ApagarAlbum([FromBody] AlbumModel AlbumModel,int Id)
         {
-            return Ok(await _AlbumRepositorio.ApagarAlbum(AlbumModel,Id));
+            return Ok(await _AlbumRepositorio.ApagaAlbum(Id,AlbumModel));
         }
     }
 }
