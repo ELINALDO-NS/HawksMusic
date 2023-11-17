@@ -1762,23 +1762,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Santos\\.nuget\\packages\\": {},
+    "C:\\Users\\SUPORTE\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Santos\\Documents\\HawksMusic\\Back\\HawksMusic.API\\HawksMusic.API\\HawksMusic.API.csproj",
+      "projectUniqueName": "C:\\Users\\SUPORTE\\Documents\\HawksMusic\\Back\\HawksMusic.API\\HawksMusic.API\\HawksMusic.API.csproj",
       "projectName": "HawksMusic.API",
-      "projectPath": "C:\\Users\\Santos\\Documents\\HawksMusic\\Back\\HawksMusic.API\\HawksMusic.API\\HawksMusic.API.csproj",
-      "packagesPath": "C:\\Users\\Santos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Santos\\Documents\\HawksMusic\\Back\\HawksMusic.API\\HawksMusic.API\\obj\\",
+      "projectPath": "C:\\Users\\SUPORTE\\Documents\\HawksMusic\\Back\\HawksMusic.API\\HawksMusic.API\\HawksMusic.API.csproj",
+      "packagesPath": "C:\\Users\\SUPORTE\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SUPORTE\\Documents\\HawksMusic\\Back\\HawksMusic.API\\HawksMusic.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Santos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SUPORTE\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

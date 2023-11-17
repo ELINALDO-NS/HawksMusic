@@ -6,7 +6,7 @@ using HawksMusic.API.Data;
 using HawksMusic.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HawksMusic.API.Repositorios.Interface
+namespace HawksMusic.API.Repositorios
 {
     public class AlbumRepositorio : IAlbumRepositorio
     {
