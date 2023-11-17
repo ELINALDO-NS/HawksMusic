@@ -20,27 +20,27 @@ namespace HawksMusic.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UsusarioModel>> CriarUsuaro([FromBody] UsusarioModel ususarioModel)
+        public async Task<ActionResult<UsuarioModel>> CriarUsuaro([FromBody] UsuarioModel ususarioModel)
         {
             
             return Ok(await _usuarioRepositorio.CriarUsuario(ususarioModel));
         }
         [HttpGet]
-        public async Task<ActionResult<List<UsusarioModel>>> ListaUsuarios()
+        public async Task<ActionResult<List<UsuarioModel>>> ListaUsuarios()
         {
             
             return Ok(await _usuarioRepositorio.ListarUsusarios());
         }
 
          [HttpGet("{Id}")]
-        public async Task<ActionResult<List<UsusarioModel>>> ListaUsuariosPorId(int Id)
+        public async Task<ActionResult<List<UsuarioModel>>> ListaUsuariosPorId(int Id)
         {
-            UsusarioModel ususario = await _usuarioRepositorio.UsusarioPorId(Id);
+            UsuarioModel ususario = await _usuarioRepositorio.UsusarioPorId(Id);
             return Ok(ususario);
         }
         
        [HttpPut("{Id}")]
-        public async Task<ActionResult<UsusarioModel>> AtualizaUsuario([FromBody] UsusarioModel ususarioModel, int Id)
+        public async Task<ActionResult<UsuarioModel>> AtualizaUsuario([FromBody] UsuarioModel ususarioModel, int Id)
         {
 
             return Ok(await _usuarioRepositorio.AtualizarUsuario(Id, ususarioModel));
@@ -48,7 +48,7 @@ namespace HawksMusic.API.Controllers
         }
 
         [HttpDelete("{Id}")]
-        public async Task<ActionResult<bool>> ApagaUsuario([FromBody] UsusarioModel ususarioModel, int Id)
+        public async Task<ActionResult<bool>> ApagaUsuario([FromBody] UsuarioModel ususarioModel, int Id)
         {
             
             return Ok(await _usuarioRepositorio.ApagarUsuario(Id,ususarioModel));

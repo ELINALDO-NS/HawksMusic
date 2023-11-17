@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HawksMusic.API.Data.Map
 {
-    public class UsuarioMap : IEntityTypeConfiguration<UsusarioModel>
+    public class UsuarioMap : IEntityTypeConfiguration<UsuarioModel>
     {
-        public void Configure(EntityTypeBuilder<UsusarioModel> builder)
+        public void Configure(EntityTypeBuilder<UsuarioModel> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(255);

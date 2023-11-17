@@ -19,50 +19,50 @@ namespace HawksMusic.API.Repositorios
             _hawksDataContext = hawksDataContext;
         }
 
-        public async Task<bool> ApagarUsuario(int Id,UsusarioModel UsusarioModel)
+        public async Task<bool> ApagarUsuario(int Id,UsuarioModel UsuarioModel)
         {
 
-            UsusarioModel ususario = await UsusarioPorId(Id);
-            if(ususario != null)
+            UsuarioModel usuario = await UsusarioPorId(Id);
+            if(usuario != null)
             {                    
-              _hawksDataContext.Ususarios.Remove(ususario);
+              _hawksDataContext.Usuarios.Remove(UsuarioModel);
               await _hawksDataContext.SaveChangesAsync();
               return true;
             }
             else
             {
-                throw new Exception($"Usuario com Id {Id} Não encontrado !");
+                throw new Exception($"usuario com Id {Id} Não encontrado !");
             }  
              
             
             
         }
 
-        public async Task<UsusarioModel> AtualizarUsuario(int Id, UsusarioModel UsusarioModel)
+        public async Task<UsuarioModel> AtualizarUsuario(int Id, UsuarioModel UsusarioModel)
         {
-            UsusarioModel ususario = await UsusarioPorId(Id);
-            if(ususario != null)
+            UsuarioModel usuario = await UsusarioPorId(Id);
+            if(usuario != null)
             {                    
                 
-                 ususario.Nome = UsusarioModel.Nome;
-                 ususario.Email = UsusarioModel.Email;
-                 ususario.Senha = UsusarioModel.Senha;
-                 ususario.PlayListModelId = UsusarioModel.PlayListModelId;                    
-                  _hawksDataContext.Ususarios.Update(ususario);
+                 usuario.Nome = UsusarioModel.Nome;
+                 usuario.Email = UsusarioModel.Email;
+                 usuario.Senha = UsusarioModel.Senha;
+                 usuario.PlayListModelId = UsusarioModel.PlayListModelId;                    
+                  _hawksDataContext.Usuarios.Update(usuario);
                   await _hawksDataContext.SaveChangesAsync();
-                  return ususario;
+                  return usuario;
             }
             else
             {
-                throw new Exception($"Usuario com Id {Id} Não encontrado !");
+                throw new Exception($"usuario com Id {Id} Não encontrado !");
             }  
            
 
         }
 
-        public async Task<UsusarioModel> CriarUsuario(UsusarioModel UsusarioModel)
+        public async Task<UsuarioModel> CriarUsuario(UsuarioModel UsusarioModel)
         {
-           UsusarioModel ususario = new UsusarioModel()
+           UsuarioModel ususario = new UsuarioModel()
            {
                 Nome = UsusarioModel.Nome,
                Email = UsusarioModel.Email,
@@ -70,19 +70,19 @@ namespace HawksMusic.API.Repositorios
                PlayList = UsusarioModel.PlayList
 
            } ;
-           await _hawksDataContext.Ususarios.AddAsync(ususario);
+           await _hawksDataContext.Usuarios.AddAsync(ususario);
            await _hawksDataContext.SaveChangesAsync();
            return ususario;
         }
 
-        public async Task<List<UsusarioModel>> ListarUsusarios()
+        public async Task<List<UsuarioModel>> ListarUsusarios()
         {
-          return  await _hawksDataContext.Ususarios.ToListAsync();
+          return  await _hawksDataContext.Usuarios.ToListAsync();
         }
 
-        public async Task<UsusarioModel> UsusarioPorId(int Id)
+        public async Task<UsuarioModel> UsusarioPorId(int Id)
         {
-           return await _hawksDataContext.Ususarios.FirstOrDefaultAsync(x => x.Id == Id) ;
+           return await _hawksDataContext.Usuarios.FirstOrDefaultAsync(x => x.Id == Id) ;
 
         }
     }

@@ -13,7 +13,7 @@ namespace HawksMusic.API.Data
     {
         public HawksDataContext(DbContextOptions options) : base(options){}
 
-       public DbSet<UsusarioModel> Ususarios {get;set;}
+       public DbSet<UsuarioModel> Usuarios {get;set;}
        public DbSet<MusicaModel> Musicas {get;set;}
        public  DbSet<AlbumModel> Albums {get;set;}
        public DbSet<PlayListModel> PlayLists {get;set;}

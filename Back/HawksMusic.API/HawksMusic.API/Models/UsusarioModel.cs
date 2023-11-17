@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HawksMusic.API.Models
 {
-    public class UsusarioModel
+    public class UsuarioModel
     {
         public int Id { get; set; }                
         public string Nome { get; set; }                

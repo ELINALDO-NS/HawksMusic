@@ -8,11 +8,11 @@ namespace HawksMusic.API.Repositorios.Interface
 {
     public interface IUsuarioRepositorio
     {
-        Task<UsusarioModel> CriarUsuario(UsusarioModel UsusarioModel);
-        Task<List<UsusarioModel>> ListarUsusarios();
-        Task<UsusarioModel> UsusarioPorId(int Id);
-        Task<UsusarioModel> AtualizarUsuario(int Id,UsusarioModel UsusarioModel);
-        Task<bool> ApagarUsuario(int Id,UsusarioModel UsusarioModel);
+        Task<UsuarioModel> CriarUsuario(UsuarioModel UsuarioModel);
+        Task<List<UsuarioModel>> ListarUsusarios();
+        Task<UsuarioModel> UsusarioPorId(int Id);
+        Task<UsuarioModel> AtualizarUsuario(int Id,UsuarioModel UsuarioModel);
+        Task<bool> ApagarUsuario(int Id,UsuarioModel UsuarioModel);
         
 
 
