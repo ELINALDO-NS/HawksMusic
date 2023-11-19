@@ -9,7 +9,8 @@ namespace HawksMusic.API.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public List<MusicaModel> Musicas { get; set; }
+        public int?  MusicaId { get; set; }
+        public virtual MusicaModel? Musica { get; set; }
 
     }
 }

@@ -34,7 +34,7 @@ public class PlayListRepositorio : IPlayListRepositorio
         PlayListModel playList = await ListarPlayListsPorId(Id);
         if(playList != null)
         {
-            playList.Musicas = playListModel.Musicas;
+            playList.MusicaId = playListModel.MusicaId;
             playList.Nome = playListModel.Nome;
              _hawksDataContext.Update(playList);
              await _hawksDataContext.SaveChangesAsync();
