@@ -24,7 +24,6 @@ namespace HawksMusic.API.Data
             modelBuilder.ApplyConfiguration(new MusicaMap());
             modelBuilder.ApplyConfiguration(new AlbumMap());
             modelBuilder.ApplyConfiguration(new PlayListMap());
-            modelBuilder.ApplyConfiguration(new UsuarioPlayListMap());
             base.OnModelCreating(modelBuilder);
         }
 

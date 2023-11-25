@@ -16,8 +16,8 @@ namespace HawksMusic.API.Data.Map
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(255);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(255);
             builder.Property(x => x.Senha).IsRequired().HasMaxLength(255);
-            builder.Property(x => x.UsuarioPlayListId);
-            builder.HasOne(x => x.UsuarioPlayList);
+            builder.Property(x => x.PlayListModelId);
+            builder.HasOne(x => x.PlayListModel);
         }
     }
 }
