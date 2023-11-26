@@ -3,6 +3,7 @@ using System;
 using HawksMusic.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HawksMusic.API.Migrations
 {
     [DbContext(typeof(HawksDataContext))]
-    partial class HawksDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231126135003_Adição de Lista de PlayList Para Usuario")]
+    partial class AdiçãodeListadePlayListParaUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -65,14 +68,9 @@ namespace HawksMusic.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PlayListId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumModelId");
-
-                    b.HasIndex("PlayListId");
 
                     b.ToTable("Musicas");
                 });
@@ -81,6 +79,9 @@ namespace HawksMusic.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("MusicaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
@@ -93,6 +94,8 @@ namespace HawksMusic.API.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MusicaId");
 
                     b.HasIndex("UsuarioId");
 
@@ -131,31 +134,24 @@ namespace HawksMusic.API.Migrations
                         .WithMany()
                         .HasForeignKey("AlbumModelId");
 
-                    b.HasOne("HawksMusic.API.Models.PlayListModel", "PlayList")
-                        .WithMany("Musica")
-                        .HasForeignKey("PlayListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Album");
-
-                    b.Navigation("PlayList");
                 });
 
             modelBuilder.Entity("HawksMusic.API.Models.PlayListModel", b =>
                 {
+                    b.HasOne("HawksMusic.API.Models.MusicaModel", "Musica")
+                        .WithMany()
+                        .HasForeignKey("MusicaId");
+
                     b.HasOne("HawksMusic.API.Models.UsuarioModel", "Usuario")
                         .WithMany("PlayList")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("HawksMusic.API.Models.PlayListModel", b =>
-                {
                     b.Navigation("Musica");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("HawksMusic.API.Models.UsuarioModel", b =>

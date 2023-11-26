@@ -8,9 +8,10 @@ namespace HawksMusic.API.Models
     public class PlayListModel
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public int?  MusicaId { get; set; }
-        public virtual MusicaModel? Musica { get; set; }
+        public string Nome { get; set; }        
+        public  IEnumerable<MusicaModel>? Musica { get; set; }
+        public int? UsuarioId { get; set; }
+        public UsuarioModel? Usuario { get; set; }
 
     }
 }

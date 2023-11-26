@@ -47,7 +47,7 @@ namespace HawksMusic.API.Repositorios
                  usuario.Nome = UsusarioModel.Nome;
                  usuario.Email = UsusarioModel.Email;
                  usuario.Senha = UsusarioModel.Senha;
-                 usuario.PlayListModelId = UsusarioModel.PlayListModelId;                    
+                 usuario.PlayList = UsusarioModel.PlayList;                    
                   _hawksDataContext.Usuarios.Update(usuario);
                   await _hawksDataContext.SaveChangesAsync();
                   return usuario;
@@ -67,7 +67,7 @@ namespace HawksMusic.API.Repositorios
                 Nome = UsusarioModel.Nome,
                Email = UsusarioModel.Email,
                Senha = UsusarioModel.Senha,
-               PlayListModelId = UsusarioModel.PlayListModelId
+               PlayList = UsusarioModel.PlayList
 
            } ;
            await _hawksDataContext.Usuarios.AddAsync(ususario);

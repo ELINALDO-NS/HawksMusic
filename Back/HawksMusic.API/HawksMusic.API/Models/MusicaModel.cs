@@ -10,6 +10,8 @@ namespace HawksMusic.API.Models
        public int Id { get; set; } 
        public string  Nome { get; set; }
        public string  Arquivo { get; set; }
+       public int PlayListId { get; set; }
+       public PlayListModel PlayList { get; set; }
        public int? AlbumModelId { get; set; }
        public virtual  AlbumModel? Album { get; set; }
     }

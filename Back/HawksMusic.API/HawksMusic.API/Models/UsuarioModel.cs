@@ -11,8 +11,7 @@ namespace HawksMusic.API.Models
         public string Nome { get; set; }                
         public string Email { get; set; }                
         public string Senha { get; set; } 
-        public int? PlayListModelId  { get; set; }  
-        public PlayListModel? PlayListModel { get; set; }       
+        public virtual ICollection<PlayListModel>? PlayList { get; set; }       
        
     }
 }

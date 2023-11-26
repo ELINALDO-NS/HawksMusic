@@ -14,7 +14,7 @@ public class PlayListMap : IEntityTypeConfiguration<PlayListModel>
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Nome).IsRequired().HasMaxLength(30);
-        //builder.Property(x => x.Musicas).IsRequired().HasMaxLength(30);
+        builder.HasOne(x => x.Usuario).WithMany(x => x.PlayList).IsRequired();
     }
 }
 }
